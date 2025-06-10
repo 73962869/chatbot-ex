@@ -9,7 +9,7 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone
 
-## 환경변수 읽어오기
+## 환경변수 읽어오기 ############################################
 load_dotenv()
 
 ## llm 함수 정의
@@ -44,7 +44,7 @@ def get_retrievalQA():
 
     prompt = hub.pull('rlm/rag-prompt', api_key=LANGCHAIN_API_KEY)
 
-        ## LLM 모델 지정
+    ## LLM 모델 지정
 
     llm = get_llm()
 
@@ -67,10 +67,7 @@ def get_retrievalQA():
 
 ## [AI Message 함수 정의] #########################################################
 def get_ai_message(user_message):
-    ## 환경변수 읽어오기 ############################################
-    load_dotenv()
-
     qa_chain = get_retrievalQA()
+    ai_message = qa_chain.invoke(user_message)
 
-    ai_message = qa_chain(user_message)
     return ai_message
