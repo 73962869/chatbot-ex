@@ -42,7 +42,8 @@ def get_retrievalQA():
     ## vector store에서 index 정보
     database = get_database()
 
-    prompt = hub.pull('rlm/rag-prompt', api_key=LANGCHAIN_API_KEY)
+    # prompt = hub.pull('rlm/rag-prompt', api_key=LANGCHAIN_API_KEY)
+    prompt = hub.pull('choi/rag-prompt', api_key=LANGCHAIN_API_KEY)
 
     ## LLM 모델 지정
 
